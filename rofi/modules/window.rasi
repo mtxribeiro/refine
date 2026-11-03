@@ -1,11 +1,10 @@
 window {
     transparency: "real";
-    width: 620px;
-    border-radius: 5px;
-    background-color: #121212FF;
-    border: 1px solid;
-    border-color: #80808055;
+    width: 710px;
+    border-radius: 8px;
+    background-color: #181818FF;
+    border: 0px solid;
     padding: 12px;
     location: north;
-    y-offset: 50;
+    y-offset: 100;
 }

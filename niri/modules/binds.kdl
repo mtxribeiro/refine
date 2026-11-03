@@ -1,5 +1,6 @@
 binds {
     Mod+Return { spawn "alacritty"; }
+    Mod+X { spawn "hyprpicker -a"; }
     Mod+Space { spawn-sh "rofi -show drun"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }

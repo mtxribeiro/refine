@@ -3,28 +3,27 @@ element {
     margin: 0px;
     padding: 10px;
     border: 0px solid;
-    border-radius: 5px;
-    border-color: #121212FF;
+    border-radius: 8px;
     background-color: transparent;
-    text-color: #C0C0C0FF;
+    text-color: #DADADA;
 }
 
 element normal.normal {
 	background-color: transparent;
-	text-color: #C0C0C0FF;
+	text-color: #DADADA;
 }
 
 element alternate.normal {
 	background-color: transparent;
-	text-color: #C0C0C0FF;
+	text-color: #DADADA;
 }
 
 element selected.active {
 	background-color: transparent;
-	text-color: #FFFFFFFF;
+	text-color: #DADADA;
 }
 
 element selected.normal {
-	background-color: #3F3F3F55;
-	text-color: #FFFFFFFF;
+	background-color: #3F3F3F;
+	text-color: #DADADA;
 }
