@@ -1,9 +1,0 @@
-listview {
-    columns: 1;
-    lines: 6;
-    fixed-height: false;
-    fixed-columns: true;
-    cycle: false;
-    scrollbar: false;
-    border: 0px solid;
-}

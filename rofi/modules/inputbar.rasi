@@ -1,4 +1,0 @@
-inputbar {
-    children: ["entry"];
-    spacing: 10px;
-}

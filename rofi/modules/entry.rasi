@@ -1,9 +1,0 @@
-entry {
-    placeholder: "  Digite para pesquisar...";
-    text-color: #DADADA;
-    background-color: #181818;
-    padding: 8px;
-    border-radius: 8px;
-    border: 2px;
-    border-color: #DADADA;
-}

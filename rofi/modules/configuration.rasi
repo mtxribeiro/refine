@@ -1,5 +1,0 @@
-configuration {
-    modi: "drun";
-    show-icons: true;
-    drun-display-format: "{name}\n<span size='x-small' alpha='60%'>{comment}</span>";
-}
