@@ -1,0 +1,9 @@
+recent-windows {
+    debounce-ms 0
+    open-delay-ms 0
+
+    highlight {
+        padding 2
+        corner-radius 3
+    }
+}
