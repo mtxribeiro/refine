@@ -1,0 +1,10 @@
+entry {
+    placeholder: "";
+    text-color: #C0C0C0FF;
+    placeholder-color: #80808055;
+    background-color: #12121255;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px;
+    border-color: #C0C0C055;
+}

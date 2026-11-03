@@ -1,0 +1,12 @@
+// IMPORTS
+
+@import "modules/global.rasi"
+@import "modules/configuration.rasi"
+@import "modules/listview.rasi"
+@import "modules/window.rasi"
+@import "modules/prompt.rasi"
+@import "modules/inputbar.rasi"
+@import "modules/entry.rasi"
+@import "modules/mainbox.rasi"
+@import "modules/element.rasi"
+@import "modules/message.rasi"

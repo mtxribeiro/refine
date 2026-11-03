@@ -1,0 +1,11 @@
+window {
+    transparency: "real";
+    width: 620px;
+    border-radius: 5px;
+    background-color: #121212FF;
+    border: 1px solid;
+    border-color: #80808055;
+    padding: 12px;
+    location: north;
+    y-offset: 50;
+}

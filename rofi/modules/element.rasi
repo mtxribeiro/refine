@@ -1,0 +1,30 @@
+element {
+    spacing: 10px;
+    margin: 0px;
+    padding: 10px;
+    border: 0px solid;
+    border-radius: 5px;
+    border-color: #121212FF;
+    background-color: transparent;
+    text-color: #C0C0C0FF;
+}
+
+element normal.normal {
+	background-color: transparent;
+	text-color: #C0C0C0FF;
+}
+
+element alternate.normal {
+	background-color: transparent;
+	text-color: #C0C0C0FF;
+}
+
+element selected.active {
+	background-color: transparent;
+	text-color: #FFFFFFFF;
+}
+
+element selected.normal {
+	background-color: #3F3F3F55;
+	text-color: #FFFFFFFF;
+}
