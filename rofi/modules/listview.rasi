@@ -1,7 +1,7 @@
 listview {
     columns: 1;
     lines: 6;
-    fixed-height: true;
+    fixed-height: false;
     fixed-columns: true;
     cycle: false;
     scrollbar: false;
