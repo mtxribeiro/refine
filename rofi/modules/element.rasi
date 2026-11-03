@@ -47,7 +47,3 @@ element selected.normal {
     background-color: #3F3F3F;
     text-color: #DADADA;
 }
-
-listview {
-    fixed-height: false;
-}
