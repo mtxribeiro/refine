@@ -1,4 +1,4 @@
-// CONFIGURATION
+// ── CONFIGURATION ───────────────────────────────────────────────────────────
 
 configuration {
     modi: "drun";
@@ -6,61 +6,67 @@ configuration {
     drun-display-format: "{name}\n<span size='x-small' alpha='60%'>{comment}</span>";
 }
 
-// GLOBAL
+// ── GLOBAL ──────────────────────────────────────────────────────────────────
 
 * {
-    font: "Noto Sans 12";
-    highlight: bold;
+    window-bg:  #242424FF;
+    view-bg:    #1E1E1EFF;
+    fg:         #FFFFFFFF;
+    fg-muted:   #9A9996FF;
+    accent:     #78AEEDFF;
+    outline:    #FFFFFF26;
+    selection:  #FFFFFF1F;
+
+    font:       "Noto Sans 12";
+    highlight:  bold #78AEED;
 }
 
-// WINDOW
+// ── WINDOW ──────────────────────────────────────────────────────────────────
 
 window {
     transparency: "real";
-    width: 710px;
-    border-radius: 8px;
-    background-color: #181818FF;
-    border: 0px solid;
-    padding: 12px;
     location: north;
     y-offset: 100;
+    width: 710px;
+    padding: 12px;
+    background-color: @window-bg;
+    border: 1px solid;
+    border-color: @outline;
+    border-radius: 12px;
 }
 
-// MAINBOX
+// ── MAINBOX ─────────────────────────────────────────────────────────────────
 
 mainbox {
+    children: ["inputbar", "listview", "message"];
     spacing: 10px;
     margin: 0px;
     padding: 10px;
-    children: ["inputbar", "listview", "message"];
 }
 
-// INPUTBAR
+// ── INPUTBAR ────────────────────────────────────────────────────────────────
 
 inputbar {
     children: ["entry"];
     spacing: 10px;
 }
 
-// PROMPT
-
 prompt {
-    text-color: #C0C0C0FF;
+    text-color: @fg-muted;
 }
-
-// ENTRY
 
 entry {
     placeholder: "  Digite para pesquisar...";
-    text-color: #DADADA;
-    background-color: #181818;
+    placeholder-color: @fg-muted;
+    text-color: @fg;
+    background-color: @view-bg;
     padding: 8px;
-    border-radius: 8px;
     border: 2px;
-    border-color: #DADADA;
+    border-color: @accent;
+    border-radius: 8px;
 }
 
-// LISTVIEW
+// ── LISTVIEW ────────────────────────────────────────────────────────────────
 
 listview {
     columns: 1;
@@ -69,56 +75,62 @@ listview {
     fixed-columns: true;
     cycle: true;
     scrollbar: false;
-    border: 0px solid;
     require-input: true;
+    border: 0px solid;
 }
 
-// ELEMENT
+// ── ELEMENT ─────────────────────────────────────────────────────────────────
 
 element {
     orientation: horizontal;
-    children: [ element-icon, element-text ];
+    children: [ "element-icon", "element-text" ];
     spacing: 8px;
     margin: 0px;
     padding: 6px 10px;
     border: 0px solid;
     border-radius: 8px;
     background-color: transparent;
-    text-color: #DADADA;
+    text-color: @fg;
 }
 
 element-icon {
-    background-color: transparent;
     size: 1.8em;
     vertical-align: 0.5;
+    background-color: transparent;
 }
 
 element-text {
+    expand: true;
+    markup: true;
+    vertical-align: 0.5;
     background-color: transparent;
     text-color: inherit;
-    markup: true;
-    expand: true;
-    vertical-align: 0.5;
 }
 
 element normal.normal,
-element alternate.normal,
-element selected.active {
+element alternate.normal {
     background-color: transparent;
-    text-color: #DADADA;
+    text-color: @fg;
 }
 
-element selected.normal {
-    background-color: #3F3F3F;
-    text-color: #DADADA;
+element normal.active,
+element alternate.active {
+    background-color: transparent;
+    text-color: @accent;
 }
 
-// MESSAGE
+element selected.normal,
+element selected.active {
+    background-color: @selection;
+    text-color: @fg;
+}
+
+// ── MESSAGE ─────────────────────────────────────────────────────────────────
 
 message,
 error-message,
 textbox {
     background-color: transparent;
-    text-color: #FFFFFFFF;
+    text-color: @fg;
     border: 0px solid;
 }

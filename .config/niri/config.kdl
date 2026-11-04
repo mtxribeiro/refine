@@ -1,4 +1,4 @@
-// INPUT
+// ── INPUT ───────────────────────────────────────────────────────────────────
 
 input {
     keyboard {
@@ -20,7 +20,7 @@ input {
     focus-follows-mouse max-scroll-amount="0%"
 }
 
-// OUTPUT
+// ── OUTPUT ──────────────────────────────────────────────────────────────────
 
 output "DP-1" {
     mode "2560x1440@180.00"
@@ -28,7 +28,7 @@ output "DP-1" {
     position x=0 y=0
 }
 
-// LAYOUT
+// ── LAYOUT ──────────────────────────────────────────────────────────────────
 
 layout {
     gaps 16
@@ -45,66 +45,85 @@ layout {
 
     focus-ring {
         width 2
-        active-color "#DADADA"
+        active-color   "#78aeed"
+        inactive-color "#5e5c64"
+        urgent-color   "#e01b24"
+    }
+
+    border {
+        off
+    }
+
+    insert-hint {
+        color "#3584e480"
     }
 }
 
-// WINDOW DECORATIONS
+// ── OVERVIEW ────────────────────────────────────────────────────────────────
+
+overview {
+    backdrop-color "#1e1e1e"
+}
+
+// ── WINDOW DECORATIONS ──────────────────────────────────────────────────────
 
 prefer-no-csd
 
-// WINDOW RULES
+// ── WINDOW RULES ────────────────────────────────────────────────────────────
 
 window-rule {
     geometry-corner-radius 8
     clip-to-geometry true
 }
 
-// RECENT WINDOWS
+// ── RECENT WINDOWS ──────────────────────────────────────────────────────────
 
 recent-windows {
     debounce-ms 0
     open-delay-ms 0
 
     highlight {
+        active-color "#3584e4"
+        urgent-color "#e01b24"
         padding 2
         corner-radius 3
     }
 }
 
-// HOTKEY OVERLAY
+// ── HOTKEY OVERLAY ──────────────────────────────────────────────────────────
 
 hotkey-overlay {
     skip-at-startup
 }
 
-// SCREENSHOTS
+// ── SCREENSHOTS ─────────────────────────────────────────────────────────────
 
 screenshot-path null
 
-// STARTUP
+// ── STARTUP ─────────────────────────────────────────────────────────────────
 
 spawn-sh-at-startup "swaybg -i ~/.config/niri/.current-wallpaper -m fill"
 
-// BINDS
+// ── BINDS ───────────────────────────────────────────────────────────────────
 
 binds {
-    Mod+Return { spawn "alacritty"; }
-    Mod+Space { spawn-sh "rofi -show drun"; }
 
-    Mod+W { spawn-sh "~/.config/niri/scripts/wallpaper.sh"; }
+    Mod+Return { spawn "alacritty"; }
+    Mod+Space  { spawn-sh "rofi -show drun"; }
+    Mod+W      { spawn-sh "~/.config/niri/scripts/wallpaper.sh"; }
+
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    XF86AudioMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
     XF86AudioPlay allow-when-locked=true { spawn-sh "playerctl play-pause"; }
     XF86AudioStop allow-when-locked=true { spawn-sh "playerctl stop"; }
     XF86AudioPrev allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext allow-when-locked=true { spawn-sh "playerctl next"; }
 
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
 
     Mod+O repeat=false { toggle-overview; }
@@ -115,14 +134,15 @@ binds {
     Mod+J { focus-window-or-workspace-down; }
     Mod+K { focus-window-or-workspace-up; }
 
+    Mod+Comma  { focus-column-first; }
+    Mod+Period { focus-column-last; }
+
     Mod+Shift+H { move-column-left; }
     Mod+Shift+L { move-column-right; }
     Mod+Shift+J { move-window-down-or-to-workspace-down; }
     Mod+Shift+K { move-window-up-or-to-workspace-up; }
 
-    Mod+Comma { focus-column-first; }
-    Mod+Period { focus-column-last; }
-    Mod+Shift+Comma { move-column-to-first; }
+    Mod+Shift+Comma  { move-column-to-first; }
     Mod+Shift+Period { move-column-to-last; }
 
     Mod+Ctrl+H { focus-monitor-left; }
@@ -135,10 +155,10 @@ binds {
     Mod+Ctrl+Shift+K { move-column-to-monitor-up; }
     Mod+Ctrl+Shift+L { move-column-to-monitor-right; }
 
-    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
-    Mod+WheelScrollUp cooldown-ms=150 { focus-workspace-up; }
+    Mod+WheelScrollDown       cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp         cooldown-ms=150 { focus-workspace-up; }
     Mod+Shift+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
-    Mod+Shift+WheelScrollUp cooldown-ms=150 { move-column-to-workspace-up; }
+    Mod+Shift+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
 
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
@@ -165,7 +185,7 @@ binds {
     Mod+F { fullscreen-window; }
     Mod+C { center-column; }
 
-    Print { screenshot; }
+    Print       { screenshot; }
     Mod+Shift+S { screenshot; }
 
     Mod+Shift+Escape { quit; }
