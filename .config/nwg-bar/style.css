@@ -1,21 +1,13 @@
 /* GLOBAL */
 
 * {
-    font-family: "Noto Sans"";
-    font-size: 12px;
-    font-weight: 500;
     color: #ffffff;
-    text-shadow: none;
 }
 
 /* WINDOW */
 
 window {
     background-color: transparent;
-}
-
-#outer-box {
-    margin: 0px;
 }
 
 #inner-box {
