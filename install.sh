@@ -10,6 +10,7 @@ sudo pacman -S --needed --noconfirm \
     xdg-desktop-portal-gtk xdg-desktop-portal-gnome \
     polkit-gnome gnome-keyring \
     noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-liberation ttf-dejavu \
+    adw-gtk-theme
     base-devel flatpak zip unzip unrar vim \
     niri xwayland-satellite rofi \
     alacritty pavucontrol mpv imv
@@ -34,6 +35,9 @@ fi
 mkdir -p ~/.config
 
 cp -r "$SCRIPT_DIR/.config/"* ~/.config/
+
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
 
 sudo pacman -Scc --noconfirm
 
