@@ -1,4 +1,4 @@
-// ── CONFIGURATION ───────────────────────────────────────────────────────────
+// CONFIGURATION
 
 configuration {
     modi: "drun";
@@ -6,7 +6,7 @@ configuration {
     drun-display-format: "{name}\n<span size='x-small' alpha='60%'>{comment}</span>";
 }
 
-// ── GLOBAL ──────────────────────────────────────────────────────────────────
+// GLOBAL
 
 * {
     window-bg:  #242424ff;
@@ -21,7 +21,7 @@ configuration {
     highlight:  bold #78aeed;
 }
 
-// ── WINDOW ──────────────────────────────────────────────────────────────────
+// WINDOW
 
 window {
     transparency: "real";
@@ -35,7 +35,7 @@ window {
     border-radius: 8px;
 }
 
-// ── MAINBOX ─────────────────────────────────────────────────────────────────
+// MAINBOX
 
 mainbox {
     children: ["inputbar", "listview", "message"];
@@ -44,7 +44,7 @@ mainbox {
     padding: 10px;
 }
 
-// ── INPUTBAR ────────────────────────────────────────────────────────────────
+// INPUTBAR
 
 inputbar {
     children: ["entry"];
@@ -66,7 +66,7 @@ entry {
     border-radius: 8px;
 }
 
-// ── LISTVIEW ────────────────────────────────────────────────────────────────
+// LISTVIEW
 
 listview {
     columns: 1;
@@ -79,7 +79,7 @@ listview {
     border: 0px solid;
 }
 
-// ── ELEMENT ─────────────────────────────────────────────────────────────────
+// ELEMENT
 
 element {
     orientation: horizontal;
@@ -125,7 +125,7 @@ element selected.active {
     text-color: @fg;
 }
 
-// ── MESSAGE ─────────────────────────────────────────────────────────────────
+// MESSAGE
 
 message,
 error-message,
