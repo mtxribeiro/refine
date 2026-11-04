@@ -54,7 +54,7 @@ layout {
     }
 
     insert-hint {
-        color "#3584e480"
+        color "transparent"
     }
 }
 
