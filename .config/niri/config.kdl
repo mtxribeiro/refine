@@ -69,7 +69,7 @@ overview {
 
 prefer-no-csd
 
-// ── WINDOW RULES ────────────────────────────────────────────────────────────
+// ── WINDOW RULE ────────────────────────────────────────────────────────────
 
 window-rule {
     geometry-corner-radius 8
@@ -96,7 +96,7 @@ hotkey-overlay {
     skip-at-startup
 }
 
-// ── SCREENSHOTS ─────────────────────────────────────────────────────────────
+// ── SCREENSHOT ─────────────────────────────────────────────────────────────
 
 screenshot-path null
 
