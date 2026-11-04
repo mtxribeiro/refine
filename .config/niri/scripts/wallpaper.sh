@@ -1,4 +1,5 @@
 #!/bin/bash
+
 shopt -s nullglob nocaseglob extglob
 dir=~/Imagens/Wallpapers
 link=~/.config/niri/.current-wallpaper
