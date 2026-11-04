@@ -9,16 +9,16 @@ configuration {
 // ── GLOBAL ──────────────────────────────────────────────────────────────────
 
 * {
-    window-bg:  #242424FF;
-    view-bg:    #1E1E1EFF;
-    fg:         #FFFFFFFF;
-    fg-muted:   #9A9996FF;
-    accent:     #78AEEDFF;
-    outline:    #FFFFFF26;
-    selection:  #FFFFFF1F;
+    window-bg:  #242424ff;
+    view-bg:    #1e1e1eff;
+    fg:         #ffffffff;
+    fg-muted:   #9a9996ff;
+    accent:     #78aeedff;
+    outline:    #ffffff26;
+    selection:  #ffffff1f;
 
     font:       "Noto Sans 12";
-    highlight:  bold #78AEED;
+    highlight:  bold #78aeed;
 }
 
 // ── WINDOW ──────────────────────────────────────────────────────────────────
