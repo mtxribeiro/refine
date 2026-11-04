@@ -1,3 +1,5 @@
+/* GLOBAL */
+
 * {
     font-family: "Noto Sans", "Symbols Nerd Font";
     font-size: 12px;
@@ -9,7 +11,7 @@
     text-shadow: none;
 }
 
-/* GLOBAL */
+/* WINDOW */
 
 window#waybar {
     background: #242424;
@@ -19,6 +21,8 @@ window#waybar {
     border-radius: 0;
     box-shadow: none;
 }
+
+/* TOOLTIP */
 
 tooltip {
     background: #242424;
