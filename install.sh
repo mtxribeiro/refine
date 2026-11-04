@@ -11,7 +11,7 @@ apps="rofi alacritty"
 portals="xdg-desktop-portal-gtk xdg-desktop-portal-gnome"
 auth="polkit-gnome gnome-keyring"
 theme="adw-gtk-theme"
-fonts="noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-liberation ttf-dejavu"
+fonts="noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-liberation ttf-dejavu ttf-nerd-fonts-symbols"
 
 sudo pacman -Syu --noconfirm
 sudo pacman -S --needed --noconfirm $build $tools $audio $codecs $wayland $apps $portals $auth $theme $fonts
