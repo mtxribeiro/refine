@@ -32,7 +32,7 @@ window {
     background-color: @window-bg;
     border: 1px solid;
     border-color: @outline;
-    border-radius: 12px;
+    border-radius: 8px;
 }
 
 // ── MAINBOX ─────────────────────────────────────────────────────────────────
