@@ -43,7 +43,8 @@
     "modules": [
       "tray",
       "pulseaudio",
-      "network"
+      "network",
+      "custom/power"
     ]
   },
 
@@ -69,6 +70,14 @@
     "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "on-scroll-up": ":",
     "on-scroll-down": ":"
+  },
+
+  // POWER
+
+  "custom/power": {
+    "format": " ",
+    "tooltip": false,
+    "on-click": "nwg-bar"
   },
 
   // TRAY
