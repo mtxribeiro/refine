@@ -2,7 +2,7 @@
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-build="base-devel"
+build="git base-devel"
 archive="zip unzip unrar"
 tools="vim flatpak"
 audio="pipewire-audio pavucontrol"
