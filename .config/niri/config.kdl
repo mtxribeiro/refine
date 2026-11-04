@@ -47,6 +47,7 @@ layout {
         width 2
         active-color   "#78aeed"
         inactive-color "#5e5c64"
+        urgent-color   "#e01b24"
     }
 
     border {
@@ -156,6 +157,9 @@ binds {
 
     Mod+WheelScrollDown       cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp         cooldown-ms=150 { focus-workspace-up; }
+
+    Mod+Ctrl+WheelScrollDown  cooldown-ms=150 { focus-column-right; }
+    Mod+Ctrl+WheelScrollUp    cooldown-ms=150 { focus-column-left; }
 
     Mod+Shift+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
     Mod+Shift+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
