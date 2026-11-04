@@ -21,6 +21,7 @@ if ! command -v yay &>/dev/null && ! command -v paru &>/dev/null; then
         read -rp ":: AUR helper: 1) paru  2) yay  3) none (default=1): " o
         o=${o:-1}
     done
+
     if [[ $o != 3 ]]; then
         h=$([[ $o == 1 ]] && echo paru || echo yay)
         git clone "https://aur.archlinux.org/$h.git" /tmp/aurh
@@ -29,12 +30,18 @@ if ! command -v yay &>/dev/null && ! command -v paru &>/dev/null; then
 fi
 
 mkdir -p ~/.config ~/Imagens/Wallpapers
+
 cp -r "$DIR/.config/." ~/.config/
+cp "$DIR/.bash_profile" ~/.bash_profile
 
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-dark
 
 sudo pacman -Scc --noconfirm
-orphans=$(pacman -Qdtq) && sudo pacman -Rns --noconfirm $orphans
+
+orphans=$(pacman -Qdtq)
+if [[ -n "$orphans" ]]; then
+    sudo pacman -Rns --noconfirm $orphans
+fi
 
 echo -e "\n\033[1;32mInstallation complete. Reboot the system.\033[0m"
