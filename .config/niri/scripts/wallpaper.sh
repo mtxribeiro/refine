@@ -1,4 +1,3 @@
-[mtxribeiro@archlinux scripts]$ cat wallpaper.sh
 #!/bin/bash
 shopt -s nullglob nocaseglob extglob
 dir=~/Imagens/Wallpapers
