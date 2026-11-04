@@ -1,11 +1,13 @@
 {
   // GLOBAL
+
   "layer": "top",
   "position": "top",
   "height": 32,
   "spacing": 0,
 
   // MODULES
+
   "modules-left": [
     "niri/workspaces"
   ],
@@ -19,6 +21,7 @@
   ],
 
   // WORKSPACES
+
   "niri/workspaces": {
     "format": "",
     "disable-scroll": true,
@@ -26,6 +29,7 @@
   },
 
   // CLOCK
+
   "clock": {
     "format": "{:L%a %d %b  %H:%M}",
     "tooltip-format": "{:L%A, %d de %B de %Y}",
@@ -33,6 +37,7 @@
   },
 
   // TRAY
+
   "tray": {
     "icon-size": 16,
     "spacing": 8,
