@@ -28,6 +28,24 @@ if ! command -v yay &>/dev/null && ! command -v paru &>/dev/null; then
     fi
 fi
 
+aur=$(command -v paru || command -v yay)
+
+if [[ -n $aur ]]; then
+    until [[ $b =~ ^[1-3]$ ]]; do
+        read -rp ":: Browser: 1) helium  2) firefox  3) none (default=1): " b
+        b=${b:-1}
+    done
+    case $b in
+        1) "$aur" -S --needed --noconfirm helium-browser-bin ;;
+        2) sudo pacman -S --needed --noconfirm firefox ;;
+    esac
+else
+    until [[ $f =~ ^[yYnN]$ ]]; do
+        read -rp ":: Install Firefox? (y/n): " f
+    done
+    [[ $f =~ ^[yY]$ ]] && sudo pacman -S --needed --noconfirm firefox
+fi
+
 mkdir -p ~/.config ~/Imagens/Wallpapers
 cp -r "$DIR/.config/." ~/.config/
 
