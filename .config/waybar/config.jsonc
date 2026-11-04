@@ -32,8 +32,8 @@
 
   "clock": {
     "format": "{:L%a %d de %B %H:%M}",
-    "tooltip-format": "{:L%A, %d de %B de %Y}",
-    "locale": "pt_BR.UTF-8"
+    "locale": "pt_BR.UTF-8",
+    "tooltip": false
   },
 
   // TRAY

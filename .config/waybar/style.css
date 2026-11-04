@@ -22,16 +22,6 @@ window#waybar {
     box-shadow: none;
 }
 
-/* TOOLTIP */
-
-tooltip {
-    background: #242424;
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-    padding: 6px;
-}
-
 /* WORKSPACES */
 
 #workspaces {
@@ -85,11 +75,11 @@ tooltip {
     color: #ffffff;
     font-weight: 600;
     padding: 0 12px;
+    background: transparent;
 }
 
 #clock:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 6px;
+    background: transparent;
 }
 
 /* TRAY */
