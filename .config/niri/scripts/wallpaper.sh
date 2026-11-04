@@ -1,9 +1,25 @@
+[mtxribeiro@archlinux scripts]$ cat wallpaper.sh
 #!/bin/bash
-shopt -s nullglob nocaseglob
+shopt -s nullglob nocaseglob extglob
 dir=~/Imagens/Wallpapers
-file=$(for f in "$dir"/*.{jpg,jpeg,png,webp}; do
-    printf '%s\0icon\x1f%s\n' "${f##*/}" "$f"
-done | rofi -dmenu -show-icons -p "Wallpaper") || exit
-ln -sf "$dir/$file" ~/.config/niri/.current-wallpaper
-pkill swaybg
-setsid -f swaybg -i ~/.config/niri/.current-wallpaper -m fill
+link=~/.config/niri/.current-wallpaper
+step=1
+[[ $1 == prev ]] && step=-1
+
+files=("$dir"/*.@(jpg|jpeg|png|webp))
+n=${#files[@]}
+(( n )) || exit
+
+current=$(readlink -f "$link")
+idx=-1
+for i in "${!files[@]}"; do
+    [[ $(readlink -f "${files[i]}") == "$current" ]] && idx=$i && break
+done
+
+next=${files[(idx + step + n) % n]}
+ln -sf "$next" "$link"
+
+old=$(pgrep swaybg)
+setsid -f swaybg -i "$link" -m fill
+sleep 0.5
+[[ -n $old ]] && kill $old
