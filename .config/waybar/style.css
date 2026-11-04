@@ -61,7 +61,7 @@ tooltip {
 
 #workspaces button.active {
     color: transparent;
-    background: #78aeed;
+    background: #ffffff;
     min-width: 28px;
     min-height: 4px;
 }

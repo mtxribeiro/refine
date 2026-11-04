@@ -13,12 +13,12 @@ configuration {
     view-bg:    #1e1e1eff;
     fg:         #ffffffff;
     fg-muted:   #9a9996ff;
-    accent:     #78aeedff;
+    accent:     #ffffffff;
     outline:    #ffffff26;
     selection:  #ffffff1f;
 
     font:       "Noto Sans 12";
-    highlight:  bold #78aeed;
+    highlight:  bold #ffffff;
 }
 
 // WINDOW
@@ -61,7 +61,7 @@ entry {
     text-color: @fg;
     background-color: @view-bg;
     padding: 8px;
-    border: 2px;
+    border: 1px;
     border-color: @accent;
     border-radius: 8px;
 }
