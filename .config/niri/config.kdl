@@ -102,7 +102,7 @@ screenshot-path null
 
 // STARTUP
 
-// spawn-sh-at-startup ""
+spawn-sh-at-startup "waybar"
 
 // ── BINDS
 
@@ -129,16 +129,18 @@ binds {
 
     Mod+H { focus-column-left; }
     Mod+L { focus-column-right; }
+
     Mod+J { focus-window-or-workspace-down; }
     Mod+K { focus-window-or-workspace-up; }
 
-    Mod+Comma  { focus-column-first; }
-    Mod+Period { focus-column-last; }
-
     Mod+Shift+H { move-column-left; }
     Mod+Shift+L { move-column-right; }
+
     Mod+Shift+J { move-window-down-or-to-workspace-down; }
     Mod+Shift+K { move-window-up-or-to-workspace-up; }
+
+    Mod+Comma  { focus-column-first; }
+    Mod+Period { focus-column-last; }
 
     Mod+Shift+Comma  { move-column-to-first; }
     Mod+Shift+Period { move-column-to-last; }
@@ -148,13 +150,14 @@ binds {
     Mod+Ctrl+K { focus-monitor-up; }
     Mod+Ctrl+L { focus-monitor-right; }
 
-    Mod+Ctrl+Shift+H { move-column-to-monitor-left; }
-    Mod+Ctrl+Shift+J { move-column-to-monitor-down; }
-    Mod+Ctrl+Shift+K { move-column-to-monitor-up; }
-    Mod+Ctrl+Shift+L { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+H { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L { move-column-to-monitor-right; }
 
     Mod+WheelScrollDown       cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp         cooldown-ms=150 { focus-workspace-up; }
+
     Mod+Shift+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
     Mod+Shift+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
 
