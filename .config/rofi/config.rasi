@@ -70,6 +70,7 @@ listview {
     cycle: true;
     scrollbar: false;
     border: 0px solid;
+    require-input: true;
 }
 
 // ELEMENT
