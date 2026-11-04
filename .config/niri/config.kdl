@@ -3,7 +3,8 @@
 input {
     keyboard {
         xkb {
-            // layout "us"
+            layout "us"
+            variant "intl"
         }
     }
 
