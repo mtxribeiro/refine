@@ -47,7 +47,6 @@ layout {
         width 2
         active-color   "#78aeed"
         inactive-color "#5e5c64"
-        urgent-color   "#e01b24"
     }
 
     border {
