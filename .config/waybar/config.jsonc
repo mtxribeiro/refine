@@ -1,0 +1,40 @@
+{
+  // GLOBAL
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "spacing": 0,
+
+  // MODULES
+  "modules-left": [
+    "niri/workspaces"
+  ],
+
+  "modules-center": [
+    "clock"
+  ],
+
+  "modules-right": [
+    "tray"
+  ],
+
+  // WORKSPACES
+  "niri/workspaces": {
+    "format": "",
+    "disable-scroll": true,
+    "all-outputs": true
+  },
+
+  // CLOCK
+  "clock": {
+    "format": "{:%a %d %b  %H:%M}",
+    "tooltip-format": "{:%A, %d de %B de %Y}"
+  },
+
+  // TRAY
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8,
+    "show-passive-items": true
+  }
+}

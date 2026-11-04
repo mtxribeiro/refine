@@ -1,0 +1,104 @@
+* {
+    font-family: "Noto Sans", "Symbols Nerd Font";
+    font-size: 12px;
+    font-weight: 500;
+    min-height: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+/* GLOBAL */
+
+window#waybar {
+    background: #242424;
+    color: #ffffff;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 0;
+    box-shadow: none;
+}
+
+tooltip {
+    background: #242424;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 6px;
+}
+
+/* WORKSPACES */
+
+#workspaces {
+    padding: 0 12px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+#workspaces button {
+    color: transparent;
+    background: #777672;
+    min-width: 16px;
+    min-height: 4px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 4px;
+    margin-right: 4px;
+    padding: 0;
+    border: none;
+    border-radius: 999px;
+    box-shadow: none;
+    transition: all 180ms ease;
+}
+
+#workspaces button label {
+    font-size: 0;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+#workspaces button.active {
+    color: transparent;
+    background: #78aeed;
+    min-width: 28px;
+    min-height: 4px;
+}
+
+#workspaces button:hover {
+    background: #ffffff;
+}
+
+#workspaces button.urgent {
+    background: #ff7b63;
+}
+
+/* CLOCK */
+
+#clock {
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0 12px;
+}
+
+#clock:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+}
+
+/* TRAY */
+
+#tray {
+    color: #ffffff;
+    padding: 0 12px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
