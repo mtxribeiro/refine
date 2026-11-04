@@ -21,6 +21,12 @@ window#waybar {
     box-shadow: none;
 }
 
+/* TOOLTIP */
+
+tooltip {
+    opacity: 0;
+}
+
 /* WORKSPACES */
 
 #workspaces {
@@ -81,11 +87,69 @@ window#waybar {
     background: transparent;
 }
 
+/* STATUS GROUP */
+
+#status {
+    padding: 0 12px;
+}
+
+#pulseaudio,
+#network {
+    margin-left: 12px;
+}
+
+/* NETWORK + VOLUME */
+
+#network,
+#pulseaudio {
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: opacity 180ms ease;
+}
+
+#pulseaudio {
+    min-width: 16px;
+    background-size: 16px 16px;
+}
+
+#network {
+    min-width: 14px;
+    background-size: 14px 14px;
+}
+
+#network:hover,
+#pulseaudio:hover {
+    opacity: 0.7;
+}
+
+#network.wifi {
+    background-image: -gtk-icontheme("network-wireless-signal-excellent-symbolic");
+}
+
+#network.ethernet,
+#network.linked {
+    background-image: -gtk-icontheme("network-wired-symbolic");
+}
+
+#network.disconnected,
+#network.disabled {
+    background-image: -gtk-icontheme("network-offline-symbolic");
+}
+
+#pulseaudio {
+    background-image: -gtk-icontheme("audio-volume-high-symbolic");
+}
+
+#pulseaudio.muted {
+    background-image: -gtk-icontheme("audio-volume-muted-symbolic");
+}
+
 /* TRAY */
 
 #tray {
     color: #ffffff;
-    padding: 0 12px;
+    padding: 0;
 }
 
 #tray > .passive {
