@@ -83,7 +83,7 @@ screenshot-path null
 
 // STARTUP
 
-spawn-sh-at-startup "swaybg -i ~/.config/niri/current-wallpaper -m fill"
+spawn-sh-at-startup "swaybg -i ~/.config/niri/.current-wallpaper -m fill"
 
 // BINDS
 
