@@ -3,7 +3,7 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 sudo pacman -Syu --noconfirm
 sudo pacman -S --needed --noconfirm \
-    base-devel git \
+    base-devel \
     zip unzip unrar \
     vim flatpak \
     pipewire-audio pavucontrol \
