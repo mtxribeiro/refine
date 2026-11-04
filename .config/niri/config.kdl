@@ -1,4 +1,4 @@
-// ── INPUT ───────────────────────────────────────────────────────────────────
+// INPUT
 
 input {
     keyboard {
@@ -20,7 +20,7 @@ input {
     focus-follows-mouse max-scroll-amount="0%"
 }
 
-// ── OUTPUT ──────────────────────────────────────────────────────────────────
+// OUTPUT
 
 output "DP-1" {
     mode "2560x1440@180.00"
@@ -28,7 +28,7 @@ output "DP-1" {
     position x=0 y=0
 }
 
-// ── LAYOUT ──────────────────────────────────────────────────────────────────
+// LAYOUT
 
 layout {
     gaps 16
@@ -59,24 +59,24 @@ layout {
     }
 }
 
-// ── OVERVIEW ────────────────────────────────────────────────────────────────
+// OVERVIEW
 
 overview {
     backdrop-color "#1e1e1e"
 }
 
-// ── WINDOW DECORATIONS ──────────────────────────────────────────────────────
+// WINDOW DECORATIONS
 
 prefer-no-csd
 
-// ── WINDOW RULE ────────────────────────────────────────────────────────────
+// WINDOW RULE
 
 window-rule {
     geometry-corner-radius 8
     clip-to-geometry true
 }
 
-// ── RECENT WINDOWS ──────────────────────────────────────────────────────────
+// RECENT WINDOWS
 
 recent-windows {
     debounce-ms 0
@@ -90,21 +90,21 @@ recent-windows {
     }
 }
 
-// ── HOTKEY OVERLAY ──────────────────────────────────────────────────────────
+// HOTKEY OVERLAY
 
 hotkey-overlay {
     skip-at-startup
 }
 
-// ── SCREENSHOT ─────────────────────────────────────────────────────────────
+// SCREENSHOT
 
 screenshot-path null
 
-// ── STARTUP ─────────────────────────────────────────────────────────────────
+// STARTUP
 
 spawn-sh-at-startup "swaybg -i ~/.config/niri/.current-wallpaper -m fill"
 
-// ── BINDS ───────────────────────────────────────────────────────────────────
+// ── BINDS
 
 binds {
 
