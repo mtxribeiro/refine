@@ -3,7 +3,6 @@
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 build="git base-devel"
-archive="zip unzip unrar"
 tools="vim flatpak"
 audio="pipewire-audio pavucontrol"
 codecs="gstreamer gst-plugins-base gst-plugins-good gst-plugins-bad gst-plugins-ugly gst-libav"
@@ -15,7 +14,7 @@ theme="adw-gtk-theme"
 fonts="noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-liberation ttf-dejavu"
 
 sudo pacman -Syu --noconfirm
-sudo pacman -S --needed --noconfirm $build $archive $tools $audio $codecs $wayland $apps $portals $auth $theme $fonts
+sudo pacman -S --needed --noconfirm $build $tools $audio $codecs $wayland $apps $portals $auth $theme $fonts
 
 if ! command -v yay &>/dev/null && ! command -v paru &>/dev/null; then
     until [[ $o =~ ^[1-3]$ ]]; do
