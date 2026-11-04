@@ -32,7 +32,6 @@ fi
 mkdir -p ~/.config ~/Imagens/Wallpapers
 
 cp -r "$DIR/.config/." ~/.config/
-cp "$DIR/.bash_profile" ~/.bash_profile
 
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-dark
