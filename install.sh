@@ -1,20 +1,21 @@
 #!/bin/bash
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+build="base-devel"
+archive="zip unzip unrar"
+tools="vim flatpak"
+audio="pipewire-audio pavucontrol"
+codecs="gstreamer gst-plugins-base gst-plugins-good gst-plugins-bad gst-plugins-ugly gst-libav"
+viewers="mpv imv"
+wayland="niri xwayland-satellite"
+apps="rofi alacritty"
+portals="xdg-desktop-portal-gtk xdg-desktop-portal-gnome"
+auth="polkit-gnome gnome-keyring"
+theme="adw-gtk-theme"
+fonts="noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-liberation ttf-dejavu"
+
 sudo pacman -Syu --noconfirm
-sudo pacman -S --needed --noconfirm \
-    base-devel \
-    zip unzip unrar \
-    vim flatpak \
-    pipewire-audio pavucontrol \
-    gstreamer gst-plugins-{base,good,bad,ugly} gst-libav \
-    mpv imv \
-    niri xwayland-satellite \
-    rofi alacritty \
-    xdg-desktop-portal-{gtk,gnome} \
-    polkit-gnome gnome-keyring \
-    adw-gtk-theme \
-    noto-fonts noto-fonts-{emoji,cjk} ttf-{liberation,dejavu}
+sudo pacman -S --needed --noconfirm $build $archive $tools $audio $codecs $viewers $wayland $apps $portals $auth $theme $fonts
 
 if ! command -v yay &>/dev/null && ! command -v paru &>/dev/null; then
     until [[ $o =~ ^[1-3]$ ]]; do
