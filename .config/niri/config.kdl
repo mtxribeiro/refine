@@ -102,7 +102,7 @@ screenshot-path null
 
 // STARTUP
 
-spawn-sh-at-startup "swaybg -i ~/Imagens/Wallpapers/001.png -m fill"
+// spawn-sh-at-startup ""
 
 // ── BINDS
 
