@@ -30,7 +30,6 @@ if ! command -v yay &>/dev/null && ! command -v paru &>/dev/null; then
 fi
 
 mkdir -p ~/.config ~/Imagens/Wallpapers
-
 cp -r "$DIR/.config/." ~/.config/
 
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
