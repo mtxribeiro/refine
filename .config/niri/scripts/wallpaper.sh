@@ -3,8 +3,6 @@
 shopt -s nullglob nocaseglob extglob
 dir=~/Imagens/Wallpapers
 link=~/.config/niri/.current-wallpaper
-step=1
-[[ $1 == prev ]] && step=-1
 
 files=("$dir"/*.@(jpg|jpeg|png|webp))
 n=${#files[@]}
@@ -16,7 +14,7 @@ for i in "${!files[@]}"; do
     [[ $(readlink -f "${files[i]}") == "$current" ]] && idx=$i && break
 done
 
-next=${files[(idx + step + n) % n]}
+next=${files[(idx + 1) % n]}
 ln -sf "$next" "$link"
 
 old=$(pgrep swaybg)
