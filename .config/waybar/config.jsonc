@@ -48,16 +48,12 @@
     ]
   },
 
-  // NETWORK
+  // TRAY
 
-  "network": {
-    "format-wifi": " ",
-    "format-ethernet": " ",
-    "format-linked": " ",
-    "format-disconnected": " ",
-    "format-disabled": " ",
-    "tooltip": false,
-    "on-click": "nm-connection-editor"
+  "tray": {
+    "icon-size": 16,
+    "spacing": 12,
+    "show-passive-items": true
   },
 
   // VOLUME
@@ -72,19 +68,23 @@
     "on-scroll-down": ":"
   },
 
+  // NETWORK
+
+  "network": {
+    "format-wifi": " ",
+    "format-ethernet": " ",
+    "format-linked": " ",
+    "format-disconnected": " ",
+    "format-disabled": " ",
+    "tooltip": false,
+    "on-click": "nm-connection-editor"
+  },
+
   // POWER
 
   "custom/power": {
     "format": " ",
     "tooltip": false,
     "on-click": "nwg-bar"
-  },
-
-  // TRAY
-
-  "tray": {
-    "icon-size": 16,
-    "spacing": 12,
-    "show-passive-items": true
   }
 }
