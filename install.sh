@@ -37,7 +37,7 @@ cp -r "$DIR/.config/." ~/.config/
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-dark
 
-sudo pacman -Scc --noconfirm
+sudo pacman -Scc
 
 orphans=$(pacman -Qdtq)
 if [[ -n "$orphans" ]]; then
