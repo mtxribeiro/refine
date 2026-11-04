@@ -83,7 +83,7 @@ recent-windows {
     open-delay-ms 0
 
     highlight {
-        active-color "#3584e4"
+        active-color "#78aeed"
         urgent-color "#e01b24"
         padding 2
         corner-radius 3
