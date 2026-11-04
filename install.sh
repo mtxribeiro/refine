@@ -1,49 +1,40 @@
 #!/bin/bash
-
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 sudo pacman -Syu --noconfirm
-
 sudo pacman -S --needed --noconfirm \
-    pipewire-audio \
-    gstreamer gst-plugins-base gst-plugins-good gst-plugins-bad gst-plugins-ugly gst-libav \
-    xdg-desktop-portal-gtk xdg-desktop-portal-gnome \
+    base-devel git \
+    zip unzip unrar \
+    vim flatpak \
+    pipewire-audio pavucontrol \
+    gstreamer gst-plugins-{base,good,bad,ugly} gst-libav \
+    mpv imv \
+    niri xwayland-satellite \
+    rofi alacritty \
+    xdg-desktop-portal-{gtk,gnome} \
     polkit-gnome gnome-keyring \
-    noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-liberation ttf-dejavu \
-    adw-gtk-theme
-    base-devel flatpak zip unzip unrar vim \
-    niri xwayland-satellite rofi \
-    alacritty pavucontrol mpv imv
+    adw-gtk-theme \
+    noto-fonts noto-fonts-{emoji,cjk} ttf-{liberation,dejavu}
 
 if ! command -v yay &>/dev/null && ! command -v paru &>/dev/null; then
-    o=""
-    while [[ "$o" != 1 && "$o" != 2 && "$o" != 3 ]]; do
-        printf ":: Existem 3 opções disponíveis para AUR helper:\n"
-        printf "   1) paru  2) yay  3) nenhum\n\n"
-        read -rp "Digite um número (padrão=1): " o
+    until [[ $o =~ ^[1-3]$ ]]; do
+        read -rp ":: AUR helper: 1) paru  2) yay  3) none (default=1): " o
         o=${o:-1}
     done
-
-    AUR_HELPER=$([[ $o == 1 ]] && echo paru || ([[ $o == 2 ]] && echo yay))
-
-    if [[ -n "$AUR_HELPER" ]]; then
-        git clone "https://aur.archlinux.org/${AUR_HELPER}.git" /tmp/aurh
-        cd /tmp/aurh && makepkg -si --noconfirm && cd -
+    if [[ $o != 3 ]]; then
+        h=$([[ $o == 1 ]] && echo paru || echo yay)
+        git clone "https://aur.archlinux.org/$h.git" /tmp/aurh
+        (cd /tmp/aurh && makepkg -si --noconfirm)
     fi
 fi
 
 mkdir -p ~/.config
+cp -r "$DIR/.config/." ~/.config/
 
-cp -r "$SCRIPT_DIR/.config/"* ~/.config/
-
-gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-dark
 
 sudo pacman -Scc --noconfirm
+orphans=$(pacman -Qdtq) && sudo pacman -Rns --noconfirm $orphans
 
-orphans=$(pacman -Qdtq || true)
-if [[ -n "$orphans" ]]; then
-    sudo pacman -Rns --noconfirm $orphans
-fi
-
-echo -e "\n\033[1;32mInstalação concluída. Reinicie o sistema.\033[0m"
+echo -e "\n\033[1;32mInstallation complete. Reboot the system.\033[0m"
