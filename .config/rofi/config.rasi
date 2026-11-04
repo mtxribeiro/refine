@@ -48,11 +48,6 @@ mainbox {
 
 inputbar {
     children: ["entry"];
-    spacing: 10px;
-}
-
-prompt {
-    text-color: @fg-muted;
 }
 
 entry {
