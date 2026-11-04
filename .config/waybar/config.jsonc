@@ -17,7 +17,7 @@
   ],
 
   "modules-right": [
-    "tray"
+    "group/status"
   ],
 
   // WORKSPACES
@@ -36,11 +36,46 @@
     "tooltip": false
   },
 
+  // STATUS GROUP
+
+  "group/status": {
+    "orientation": "horizontal",
+    "modules": [
+      "tray",
+      "pulseaudio",
+      "network"
+    ]
+  },
+
+  // NETWORK
+
+  "network": {
+    "format-wifi": " ",
+    "format-ethernet": " ",
+    "format-linked": " ",
+    "format-disconnected": " ",
+    "format-disabled": " ",
+    "tooltip": false,
+    "on-click": "nm-connection-editor"
+  },
+
+  // VOLUME
+
+  "pulseaudio": {
+    "format": " ",
+    "format-muted": " ",
+    "tooltip": false,
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-scroll-up": ":",
+    "on-scroll-down": ":"
+  },
+
   // TRAY
 
   "tray": {
     "icon-size": 16,
-    "spacing": 8,
+    "spacing": 12,
     "show-passive-items": true
   }
 }
