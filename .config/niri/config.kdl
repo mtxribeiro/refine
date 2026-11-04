@@ -104,7 +104,7 @@ screenshot-path null
 
 spawn-sh-at-startup "waybar"
 
-// ── BINDS
+// BINDS
 
 binds {
 
