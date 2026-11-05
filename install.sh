@@ -32,13 +32,13 @@ fi
 
 mkdir -p ~/.config ~/Imagens
 
-cp -r ~/dotfiles/.config/* ~/.config/
-cp -r ~/dotfiles/Wallpapers ~/Imagens/
+cp -r "$DIR/.config/"* ~/.config/
+cp -r "$DIR/Wallpapers" ~/Imagens/
 
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-dark
 
-sudo pacman -Scc
+sudo pacman -Sc --noconfirm
 
 orphans=$(pacman -Qdtq)
 if [[ -n "$orphans" ]]; then
