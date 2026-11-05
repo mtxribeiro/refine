@@ -3,7 +3,7 @@
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 build="git base-devel"
-tools="vim flatpak"
+tools="vim flatpak imagemagick"
 audio="pipewire-audio pavucontrol"
 network="nm-connection-editor"
 codecs="gstreamer gst-plugins-base gst-plugins-good gst-plugins-bad gst-plugins-ugly gst-libav"
