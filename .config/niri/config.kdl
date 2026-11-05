@@ -187,7 +187,6 @@ binds {
     Mod+M { maximize-column; }
     Mod+F { fullscreen-window; }
     Mod+C { center-column; }
-    Mod+W { toggle-window-floating; }
 
     Print       { screenshot; }
     Mod+Shift+S { screenshot; }
