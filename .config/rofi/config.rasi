@@ -70,7 +70,7 @@ listview {
     fixed-columns: true;
     cycle: true;
     scrollbar: false;
-    require-input: true;
+    require-input: false;
     border: 0px solid;
 }
 
