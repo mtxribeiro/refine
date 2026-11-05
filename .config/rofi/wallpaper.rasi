@@ -1,13 +1,9 @@
-// GLOBAL
-
 * {
     background-color: transparent;
     window-bg:  #242424ff;
     outline:    #ffffff26;
     selection:  #ffffff1f;
 }
-
-// WINDOW
 
 window {
     transparency: "real";
@@ -21,14 +17,10 @@ window {
     border-radius: 8px;
 }
 
-// MAINBOX
-
 mainbox {
     children: ["listview"];
     padding: 0px;
 }
-
-// LISTVIEW
 
 listview {
     layout: horizontal;
@@ -38,8 +30,6 @@ listview {
     scrollbar: false;
     require-input: false;
 }
-
-// ELEMENT
 
 element {
     children: ["element-icon"];
