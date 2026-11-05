@@ -28,6 +28,7 @@ layout {
     gaps 16
     center-focused-column "never"
     always-center-single-column
+    background-color "transparent"
 
     preset-column-widths {
         proportion 0.5
@@ -76,6 +77,10 @@ recent-windows {
         corner-radius 3
     }
 }
+
+layer-rule {
+    match namespace="^wallpaper$"
+    place-within-backdrop true
 
 hotkey-overlay {
     skip-at-startup
