@@ -103,7 +103,7 @@ screenshot-path null
 // STARTUP
 
 spawn-sh-at-startup "waybar"
-spawn-sh-at-startup "swaybg -i ~/Imagens/Wallpapers/current.jpg -m fill"
+spawn-at-startup "sh" "-c" "$HOME/.config/niri/scripts/wallpaper.sh --restore"
 
 // BINDS
 
@@ -113,6 +113,8 @@ binds {
     Mod+Space  { spawn-sh "rofi -show drun"; }
     Mod+E      { spawn "nautilus"; }
     Mod+P      { spawn "nwg-bar"; }
+
+    Mod+W { spawn "sh" "-c" "$HOME/.config/niri/scripts/wallpaper.sh"; }
 
     Mod+O repeat=false { toggle-overview; }
     Mod+Q repeat=false { close-window; }
