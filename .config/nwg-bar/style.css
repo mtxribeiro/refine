@@ -1,10 +1,6 @@
-/* GLOBAL */
-
 * {
     color: #ffffff;
 }
-
-/* WINDOW */
 
 window {
     background-color: transparent;
@@ -17,8 +13,6 @@ window {
     padding: 6px;
     margin: 5px;
 }
-
-/* BUTTONS */
 
 button, image {
     background: none;
