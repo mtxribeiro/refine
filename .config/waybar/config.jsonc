@@ -36,7 +36,7 @@
     "drawer": {
       "transition-duration": 300,
       "transition-left-to-right": true,
-      "click-to-reveal": false
+      "click-to-reveal": true
     },
     "modules": [
       "custom/tray-toggle",
