@@ -43,4 +43,6 @@ if [[ -n "$orphans" ]]; then
     sudo pacman -Rns --noconfirm $orphans
 fi
 
+sudo pacman -Scc --noconfirm
+
 echo -e "\n\033[1;32mInstallation complete. Reboot the system.\033[0m"
