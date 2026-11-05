@@ -1,10 +1,5 @@
 [
   {
-    "label": "Lock",
-    "exec": "hyprlock",
-    "icon": "/usr/share/nwg-bar/images/system-lock-screen.svg"
-  },
-  {
     "label": "Logout",
     "exec": "niri msg action quit --skip-confirmation",
     "icon": "/usr/share/nwg-bar/images/system-log-out.svg"
