@@ -81,6 +81,7 @@ tooltip {
 #custom-tray-toggle {
     min-width: 16px;
     margin-left: 12px;
+    margin-right: -4px;
     padding: 0;
     background-repeat: no-repeat;
     background-position: center;
