@@ -4,8 +4,10 @@ DIR="$HOME/Imagens/Wallpapers"
 CACHE="$HOME/.cache/current-wallpaper"
 
 apply() {
-    pkill -x swaybg
+    old=$(pgrep -x swaybg)
     setsid -f swaybg -i "$1" -m fill >/dev/null 2>&1
+    sleep 0.3
+    [[ -n "$old" ]] && kill $old
     echo "$1" > "$CACHE"
 }
 
