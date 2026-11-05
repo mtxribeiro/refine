@@ -20,13 +20,9 @@ input {
 
 output "DP-1" {
     mode "2560x1440@180.00"
-    transform "normal"
-    position x=0 y=0
 }
 
 layout {
-    gaps 16
-    center-focused-column "never"
     always-center-single-column
 
     preset-column-widths {
@@ -34,19 +30,11 @@ layout {
         proportion 0.75
     }
 
-    default-column-width {
-        proportion 0.5
-    }
-
     focus-ring {
         width 1
-        active-color   "#ffffff"
+        active-color "#ffffff"
         inactive-color "#5e5c64"
-        urgent-color   "#e01b24"
-    }
-
-    border {
-        off
+        urgent-color "#e01b24"
     }
 
     insert-hint {
@@ -56,13 +44,19 @@ layout {
 
 prefer-no-csd
 
-window-rule {
-    geometry-corner-radius 12
-    clip-to-geometry true
+screenshot-path null
+
+hotkey-overlay {
+    skip-at-startup
 }
 
 overview {
     backdrop-color "#1e1e1e"
+}
+
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
 }
 
 recent-windows {
@@ -77,31 +71,22 @@ recent-windows {
     }
 }
 
-hotkey-overlay {
-    skip-at-startup
-}
-
-screenshot-path null
-
 spawn-sh-at-startup "waybar"
-spawn-at-startup "sh" "-c" "$HOME/.config/niri/scripts/wallpaper.sh --restore"
+spawn-sh-at-startup "~/.config/niri/scripts/wallpaper.sh --restore"
 
 binds {
-
-    Mod+E      { spawn "nautilus"; }
-    Mod+P      { spawn "nwg-bar"; }
-    Mod+Return { spawn "alacritty"; }
-    Mod+Escape { spawn "hyprlock"; }
+    Mod+Return { spawn-sh "alacritty"; }
     Mod+Space  { spawn-sh "rofi -show drun"; }
-
-    Mod+W { spawn "sh" "-c" "$HOME/.config/niri/scripts/wallpaper.sh"; }
+    Mod+Escape { spawn-sh "hyprlock"; }
+    Mod+E      { spawn-sh "nautilus"; }
+    Mod+P      { spawn-sh "nwg-bar"; }
+    Mod+W      { spawn-sh "~/.config/niri/scripts/wallpaper.sh"; }
 
     Mod+O repeat=false { toggle-overview; }
     Mod+Q repeat=false { close-window; }
 
     Mod+H { focus-column-left; }
     Mod+L { focus-column-right; }
-
     Mod+J { focus-window-or-workspace-down; }
     Mod+K { focus-window-or-workspace-up; }
 
@@ -110,7 +95,6 @@ binds {
 
     Mod+Shift+H { move-column-left; }
     Mod+Shift+L { move-column-right; }
-
     Mod+Shift+J { move-window-down-or-to-workspace-down; }
     Mod+Shift+K { move-window-up-or-to-workspace-up; }
 
@@ -147,11 +131,11 @@ binds {
     Mod+Shift+8 { move-column-to-workspace 8; }
     Mod+Shift+9 { move-column-to-workspace 9; }
 
-    Mod+WheelScrollDown       cooldown-ms=100 { focus-workspace-down; }
-    Mod+WheelScrollUp         cooldown-ms=100 { focus-workspace-up; }
+    Mod+WheelScrollDown cooldown-ms=100 { focus-workspace-down; }
+    Mod+WheelScrollUp   cooldown-ms=100 { focus-workspace-up; }
 
-    Mod+Ctrl+WheelScrollDown  cooldown-ms=100 { focus-column-right; }
-    Mod+Ctrl+WheelScrollUp    cooldown-ms=100 { focus-column-left; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=100 { focus-column-right; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=100 { focus-column-left; }
 
     Mod+Shift+WheelScrollDown cooldown-ms=100 { move-column-to-workspace-down; }
     Mod+Shift+WheelScrollUp   cooldown-ms=100 { move-column-to-workspace-up; }
@@ -183,8 +167,8 @@ binds {
     XF86AudioPrev allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext allow-when-locked=true { spawn-sh "playerctl next"; }
 
-    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "brightnessctl --class=backlight set +10%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "brightnessctl --class=backlight set 10%-"; }
 
     Mod+Shift+Escape { quit; }
 }
