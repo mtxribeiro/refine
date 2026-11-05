@@ -58,10 +58,6 @@ window-rule {
     clip-to-geometry true
 }
 
-overview {
-    backdrop-color "#1e1e1e"
-}
-
 recent-windows {
     debounce-ms 0
     open-delay-ms 0
