@@ -1,0 +1,56 @@
+// GLOBAL
+
+* {
+    background-color: transparent;
+    window-bg:  #242424ff;
+    outline:    #ffffff26;
+    selection:  #ffffff1f;
+}
+
+// WINDOW
+
+window {
+    transparency: "real";
+    location: north;
+    y-offset: 100;
+    width: 705px;
+    padding: 6px 12px;
+    background-color: @window-bg;
+    border: 1px solid;
+    border-color: @outline;
+    border-radius: 8px;
+}
+
+// MAINBOX
+
+mainbox {
+    children: ["listview"];
+    padding: 0px;
+}
+
+// LISTVIEW
+
+listview {
+    layout: horizontal;
+    lines: 4;
+    spacing: 10px;
+    cycle: true;
+    scrollbar: false;
+    require-input: false;
+}
+
+// ELEMENT
+
+element {
+    children: ["element-icon"];
+    padding: 3px 6px;
+    border-radius: 8px;
+}
+
+element-icon {
+    size: 150px;
+}
+
+element selected.normal {
+    background-color: @selection;
+}
