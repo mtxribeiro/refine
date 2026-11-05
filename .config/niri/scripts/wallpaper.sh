@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 DIR="$HOME/Imagens/Wallpapers"
+DEFAULT="$DIR/current.jpg"
 CACHE="$HOME/.cache/current-wallpaper"
+LOCK_CONF="$HOME/.config/hypr/hyprlock.conf"
 
 apply() {
     old=$(pgrep -x swaybg)
@@ -9,10 +11,14 @@ apply() {
     sleep 0.3
     [[ -n "$old" ]] && kill $old
     echo "$1" > "$CACHE"
+    [[ -f "$LOCK_CONF" ]] && sed -i "/^background {/,/^}/ s|^\([[:space:]]*path[[:space:]]*=\).*|\1 ${1//&/\\&}|" "$LOCK_CONF"
 }
 
 if [[ "$1" == "--restore" ]]; then
-    [[ -f "$CACHE" && -f "$(cat "$CACHE")" ]] && apply "$(cat "$CACHE")"
+    wall=""
+    [[ -f "$CACHE" ]] && wall=$(cat "$CACHE")
+    [[ -f "$wall" ]] || wall="$DEFAULT"
+    [[ -f "$wall" ]] && apply "$wall"
     exit 0
 fi
 
