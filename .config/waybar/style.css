@@ -1,7 +1,5 @@
-/* GLOBAL */
-
 * {
-    font-family: "Noto Sans", "Symbols Nerd Font";
+    font-family: "Noto Sans";
     font-size: 12px;
     font-weight: 500;
     min-height: 0;
@@ -11,20 +9,14 @@
     text-shadow: none;
 }
 
-/* WINDOW */
-
 window#waybar {
     background: #242424;
     color: #ffffff;
 }
 
-/* TOOLTIP */
-
 tooltip {
     opacity: 0;
 }
-
-/* WORKSPACES */
 
 #workspaces {
     padding: 0 12px;
@@ -64,20 +56,14 @@ tooltip {
     background: #ff7b63;
 }
 
-/* CLOCK */
-
 #clock {
     font-weight: 600;
     padding: 0 12px;
 }
 
-/* STATUS GROUP */
-
 #status {
     padding: 0 12px;
 }
-
-/* TRAY */
 
 #tray {
     padding: 0;
@@ -90,8 +76,6 @@ tooltip {
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
 }
-
-/* VOLUME + NETWORK + POWER */
 
 #pulseaudio,
 #network,
@@ -109,8 +93,6 @@ tooltip {
     opacity: 0.7;
 }
 
-/* VOLUME */
-
 #pulseaudio {
     min-width: 16px;
     background-size: 16px 16px;
@@ -120,8 +102,6 @@ tooltip {
 #pulseaudio.muted {
     background-image: -gtk-icontheme("audio-volume-muted-symbolic");
 }
-
-/* NETWORK */
 
 #network {
     min-width: 14px;
@@ -141,8 +121,6 @@ tooltip {
 #network.disabled {
     background-image: -gtk-icontheme("network-offline-symbolic");
 }
-
-/* POWER */
 
 #custom-power {
     min-width: 16px;
