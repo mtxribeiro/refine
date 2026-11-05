@@ -13,7 +13,10 @@
   ],
 
   "modules-right": [
-    "group/status"
+    "group/tray-drawer",
+    "pulseaudio",
+    "network",
+    "custom/power"
   ],
 
   "niri/workspaces": {
@@ -28,14 +31,22 @@
     "tooltip": false
   },
 
-  "group/status": {
-    "orientation": "horizontal",
+  "group/tray-drawer": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 300,
+      "transition-left-to-right": true,
+      "click-to-reveal": false
+    },
     "modules": [
-      "tray",
-      "pulseaudio",
-      "network",
-      "custom/power"
+      "custom/tray-toggle",
+      "tray"
     ]
+  },
+
+  "custom/tray-toggle": {
+    "format": " ",
+    "tooltip": false
   },
 
   "tray": {
