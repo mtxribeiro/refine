@@ -1,12 +1,8 @@
 {
-  // GLOBAL
-
   "layer": "top",
   "position": "top",
   "height": 32,
   "spacing": 0,
-
-  // MODULES
 
   "modules-left": [
     "niri/workspaces"
@@ -20,23 +16,17 @@
     "group/status"
   ],
 
-  // WORKSPACES
-
   "niri/workspaces": {
     "format": "",
     "disable-scroll": true,
     "all-outputs": true
   },
 
-  // CLOCK
-
   "clock": {
     "format": "{:L%a, %d de %B %H:%M}",
     "locale": "pt_BR.UTF-8",
     "tooltip": false
   },
-
-  // STATUS GROUP
 
   "group/status": {
     "orientation": "horizontal",
@@ -48,15 +38,11 @@
     ]
   },
 
-  // TRAY
-
   "tray": {
     "icon-size": 16,
     "spacing": 12,
     "show-passive-items": true
   },
-
-  // VOLUME
 
   "pulseaudio": {
     "format": " ",
@@ -68,8 +54,6 @@
     "on-scroll-down": ":"
   },
 
-  // NETWORK
-
   "network": {
     "format-wifi": " ",
     "format-ethernet": " ",
@@ -79,8 +63,6 @@
     "tooltip": false,
     "on-click": "nm-connection-editor"
   },
-
-  // POWER
 
   "custom/power": {
     "format": " ",
