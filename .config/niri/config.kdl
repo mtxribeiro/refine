@@ -46,10 +46,6 @@ layout {
         urgent-color   "#e01b24"
     }
 
-    border {
-        off
-    }
-
     insert-hint {
         color "transparent"
     }
