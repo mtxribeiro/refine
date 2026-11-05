@@ -30,9 +30,10 @@ if ! command -v yay &>/dev/null && ! command -v paru &>/dev/null; then
     fi
 fi
 
-mkdir -p ~/.config ~/Imagens/Wallpapers
+mkdir -p ~/.config ~/Imagens
 
-cp -r "$DIR/.config/." ~/.config/
+cp -r ~/dotfiles/.config/* ~/.config/
+cp -r ~/dotfiles/Wallpapers ~/Imagens/
 
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-dark
