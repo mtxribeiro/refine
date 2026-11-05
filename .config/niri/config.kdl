@@ -15,7 +15,7 @@ input {
         accel-speed -0.25
     }
 
-    focus-follows-mouse max-scroll-amount="0%"
+    focus-follows-mouse max-scroll-amount="100%"
 }
 
 output "DP-1" {
@@ -27,6 +27,7 @@ output "DP-1" {
 layout {
     gaps 16
     center-focused-column "never"
+    always-center-single-column
 
     preset-column-widths {
         proportion 0.333
