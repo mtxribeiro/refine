@@ -81,6 +81,7 @@ recent-windows {
 layer-rule {
     match namespace="^wallpaper$"
     place-within-backdrop true
+}
 
 hotkey-overlay {
     skip-at-startup
