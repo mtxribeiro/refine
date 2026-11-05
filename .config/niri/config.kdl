@@ -88,10 +88,11 @@ spawn-at-startup "sh" "-c" "$HOME/.config/niri/scripts/wallpaper.sh --restore"
 
 binds {
 
-    Mod+Return { spawn "alacritty"; }
-    Mod+Space  { spawn-sh "rofi -show drun"; }
     Mod+E      { spawn "nautilus"; }
     Mod+P      { spawn "nwg-bar"; }
+    Mod+Return { spawn "alacritty"; }
+    Mod+Escape { spawn "hyprlock"; }
+    Mod+Space  { spawn-sh "rofi -show drun"; }
 
     Mod+W { spawn "sh" "-c" "$HOME/.config/niri/scripts/wallpaper.sh"; }
 
