@@ -14,6 +14,10 @@ window#waybar {
     color: #ffffff;
 }
 
+window#waybar .modules-right {
+    padding-right: 12px;
+}
+
 tooltip {
     opacity: 0;
 }
@@ -61,12 +65,9 @@ tooltip {
     padding: 0 12px;
 }
 
-#status {
-    padding: 0 12px;
-}
-
 #tray {
     padding: 0;
+    margin-left: 12px;
 }
 
 #tray > .passive {
@@ -75,6 +76,21 @@ tooltip {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
+}
+
+#custom-tray-toggle {
+    min-width: 16px;
+    margin-left: 12px;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+    background-image: -gtk-icontheme("pan-start-symbolic");
+    transition: opacity 180ms ease;
+}
+
+#custom-tray-toggle:hover {
+    opacity: 0.7;
 }
 
 #pulseaudio,
@@ -94,8 +110,8 @@ tooltip {
 }
 
 #pulseaudio {
-    min-width: 16px;
-    background-size: 16px 16px;
+    min-width: 14px;
+    background-size: 14px 14px;
     background-image: -gtk-icontheme("audio-volume-high-symbolic");
 }
 
@@ -104,8 +120,8 @@ tooltip {
 }
 
 #network {
-    min-width: 14px;
-    background-size: 14px 14px;
+    min-width: 12px;
+    background-size: 12px 12px;
 }
 
 #network.wifi {
@@ -123,7 +139,7 @@ tooltip {
 }
 
 #custom-power {
-    min-width: 16px;
-    background-size: 16px 16px;
+    min-width: 14px;
+    background-size: 14px 14px;
     background-image: -gtk-icontheme("system-shutdown-symbolic");
 }
