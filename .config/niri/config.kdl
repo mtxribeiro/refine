@@ -103,6 +103,7 @@ screenshot-path null
 // STARTUP
 
 spawn-sh-at-startup "waybar"
+spawn-sh-at-startup "swaybg -i ~/Imagens/Wallpapers/current.jpg -m fill"
 
 // BINDS
 
