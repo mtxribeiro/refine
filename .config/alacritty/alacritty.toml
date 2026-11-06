@@ -5,11 +5,9 @@ TERM = "xterm-256color"
 background = "#242424"
 
 [window]
-
 dynamic_padding = false
 opacity = 1
 
 [window.padding]
-
 x = 10
 y = 10
