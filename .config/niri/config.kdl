@@ -42,10 +42,6 @@ layout {
     }
 }
 
-prefer-no-csd
-
-screenshot-path null
-
 hotkey-overlay {
     skip-at-startup
 }
@@ -73,6 +69,10 @@ recent-windows {
 
 spawn-sh-at-startup "waybar"
 spawn-sh-at-startup "~/.config/niri/scripts/wallpaper.sh --restore"
+
+prefer-no-csd
+
+screenshot-path null
 
 binds {
     Mod+Return { spawn-sh "alacritty"; }
