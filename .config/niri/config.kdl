@@ -69,6 +69,7 @@ recent-windows {
 
 spawn-sh-at-startup "waybar"
 spawn-sh-at-startup "~/.config/niri/scripts/wallpaper.sh --restore"
+spawn-sh-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 prefer-no-csd
 
