@@ -1,10 +1,11 @@
 #!/bin/bash
 
-DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$(dirname "$0")"
 
 build="git base-devel"
 tools="vim flatpak imagemagick"
 audio="pipewire-audio pavucontrol"
+keys="playerctl brightnessctl"
 network="nm-connection-editor"
 codecs="gstreamer gst-plugins-base gst-plugins-good gst-plugins-bad gst-plugins-ugly gst-libav"
 wayland="niri xwayland-satellite waybar nwg-bar swaybg hyprlock rofi"
@@ -14,8 +15,7 @@ auth="polkit-gnome gnome-keyring"
 theme="adw-gtk-theme"
 fonts="noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-liberation ttf-dejavu"
 
-sudo pacman -Syu --noconfirm
-sudo pacman -S --needed --noconfirm $build $tools $audio $network $codecs $wayland $apps $portals $auth $theme $fonts
+sudo pacman -Syu --needed --noconfirm $build $tools $audio $keys $network $codecs $wayland $apps $portals $auth $theme $fonts
 
 if ! command -v yay &>/dev/null && ! command -v paru &>/dev/null; then
     until [[ $o =~ ^[1-3]$ ]]; do
@@ -24,24 +24,22 @@ if ! command -v yay &>/dev/null && ! command -v paru &>/dev/null; then
     done
 
     if [[ $o != 3 ]]; then
-        h=$([[ $o == 1 ]] && echo paru || echo yay)
+        h=paru
+        [[ $o == 2 ]] && h=yay
         git clone "https://aur.archlinux.org/$h.git" /tmp/aurh
         (cd /tmp/aurh && makepkg -si --noconfirm)
     fi
 fi
 
 mkdir -p ~/.config ~/Imagens
-
-cp -r "$DIR/.config/"* ~/.config/
-cp -r "$DIR/Wallpapers" ~/Imagens/
+cp -r .config/* ~/.config/
+cp -r Wallpapers ~/Imagens/
 
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-dark
 
 orphans=$(pacman -Qdtq)
-if [[ -n "$orphans" ]]; then
-    sudo pacman -Rns --noconfirm $orphans
-fi
+[[ -n $orphans ]] && sudo pacman -Rns --noconfirm $orphans
 
 sudo pacman -Scc --noconfirm
 
