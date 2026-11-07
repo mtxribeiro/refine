@@ -73,109 +73,127 @@ Scope {
                     anchors.fill: parent
                 }
 
-                PathView {
-                    id: list
+                Item {
+                    id: carousel
                     anchors.fill: parent
                     anchors.margins: Theme.pad
                     clip: true
-                    model: files
                     focus: true
 
-                    // 4 cards visiveis + 1 de folga de cada lado (6 no total)
-                    pathItemCount: Math.max(1, Math.min(6, files.count))
-                    cacheItemCount: 2
-
-                    // card selecionado fica na 1a posicao visivel (2a do path)
-                    preferredHighlightBegin: 1 / pathItemCount
-                    preferredHighlightEnd: 1 / pathItemCount
-                    highlightRangeMode: PathView.StrictlyEnforceRange
-                    snapMode: PathView.SnapOneItem
-                    highlightMoveDuration: 150
-
+                    readonly property int count: files.count
+                    // com 5+ wallpapers o carrossel gira; com menos, ficam parados
+                    readonly property bool loops: count > 4
                     readonly property real step: Theme.cardWidth + Theme.gap
 
-                    path: Path {
-                        startX: -list.step + Theme.cardWidth / 2
-                        startY: list.height / 2
-                        PathLine {
-                            x: list.step * (list.pathItemCount - 1) + Theme.cardWidth / 2
-                            y: list.height / 2
+                    // target cresce/diminui sem limite; selected e o indice real
+                    property int target: 0
+                    property real scrollPos: target
+                    readonly property int selected: count > 0 ? ((target % count) + count) % count : 0
+
+                    Behavior on scrollPos {
+                        NumberAnimation {
+                            duration: 150
+                            easing.type: Easing.OutCubic
                         }
+                    }
+
+                    function next() {
+                        if (count > 0) target += 1
+                    }
+
+                    function prev() {
+                        if (count > 0) target -= 1
                     }
 
                     Component.onCompleted: forceActiveFocus()
 
                     Keys.onEscapePressed: root.open = false
-                    Keys.onReturnPressed: root.apply(files.get(currentIndex, "filePath"))
+                    Keys.onReturnPressed: {
+                        if (count > 0) root.apply(files.get(selected, "filePath"))
+                    }
                     Keys.onPressed: event => {
                         if (event.key === Qt.Key_H || event.key === Qt.Key_Backtab || event.key === Qt.Key_Left) {
-                            decrementCurrentIndex()
+                            prev()
                             event.accepted = true
                         } else if (event.key === Qt.Key_L || event.key === Qt.Key_Tab || event.key === Qt.Key_Right) {
-                            incrementCurrentIndex()
+                            next()
                             event.accepted = true
                         }
                     }
 
-                    delegate: Item {
-                        id: card
-                        required property int index
-                        required property url fileUrl
-                        required property string filePath
-                        readonly property bool selected: PathView.isCurrentItem
+                    Repeater {
+                        model: files
 
-                        width: Theme.cardWidth
-                        height: Theme.cardHeight
+                        delegate: Item {
+                            id: card
+                            required property int index
+                            required property url fileUrl
+                            required property string filePath
 
-                        Image {
-                            id: img
-                            anchors.fill: parent
-                            source: card.fileUrl
-                            sourceSize.width: Theme.cardWidth * 2
-                            fillMode: Image.PreserveAspectCrop
-                            asynchronous: true
-                            visible: false
-                        }
+                            readonly property bool isSelected: card.index === carousel.selected
 
-                        Item {
-                            id: mask
-                            anchors.fill: parent
-                            layer.enabled: true
-                            visible: false
+                            // posicao relativa: de -1 (escondido a esquerda) ate count-2
+                            readonly property real loopRel: carousel.count > 0
+                                ? (((card.index - carousel.scrollPos + 1) % carousel.count + carousel.count) % carousel.count) - 1
+                                : 0
+                            readonly property real rel: carousel.loops ? loopRel : card.index
+                            readonly property bool shown: rel > -1.5 && rel < 5
+
+                            x: rel * carousel.step
+                            width: Theme.cardWidth
+                            height: Theme.cardHeight
+                            visible: shown
+
+                            Image {
+                                id: img
+                                anchors.fill: parent
+                                source: card.shown ? card.fileUrl : ""
+                                sourceSize.width: Theme.cardWidth * 2
+                                fillMode: Image.PreserveAspectCrop
+                                asynchronous: true
+                                visible: false
+                            }
+
+                            Item {
+                                id: mask
+                                anchors.fill: parent
+                                layer.enabled: true
+                                visible: false
+
+                                Rectangle {
+                                    anchors.fill: parent
+                                    radius: Theme.cardRadius
+                                    color: "black"
+                                }
+                            }
+
+                            MultiEffect {
+                                anchors.fill: parent
+                                source: img
+                                maskEnabled: true
+                                maskSource: mask
+                            }
 
                             Rectangle {
                                 anchors.fill: parent
                                 radius: Theme.cardRadius
-                                color: "black"
+                                color: Theme.dim
+                                visible: !card.isSelected
                             }
-                        }
 
-                        MultiEffect {
-                            anchors.fill: parent
-                            source: img
-                            maskEnabled: true
-                            maskSource: mask
-                        }
+                            Rectangle {
+                                anchors.fill: parent
+                                radius: Theme.cardRadius
+                                color: "transparent"
+                                border.width: 1
+                                border.color: Theme.accent
+                                visible: card.isSelected
+                            }
 
-                        Rectangle {
-                            anchors.fill: parent
-                            radius: Theme.cardRadius
-                            color: Theme.dim
-                            visible: !card.selected
-                        }
-
-                        Rectangle {
-                            anchors.fill: parent
-                            radius: Theme.cardRadius
-                            color: "transparent"
-                            border.width: 1
-                            border.color: Theme.accent
-                            visible: card.selected
-                        }
-
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: root.apply(card.filePath)
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: root.apply(card.filePath)
+                            }
                         }
                     }
                 }
