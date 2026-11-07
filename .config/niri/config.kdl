@@ -81,7 +81,7 @@ binds {
     Mod+Escape { spawn-sh "hyprlock"; }
     Mod+E      { spawn-sh "nautilus"; }
     Mod+P      { spawn-sh "nwg-bar"; }
-    Mod+W      { spawn-sh "~/.config/niri/scripts/wallpaper.sh"; }
+    Mod+W      { spawn-sh "qs ipc call wallpaper toggle"; }
 
     Mod+O repeat=false { toggle-overview; }
     Mod+Q repeat=false { close-window; }
