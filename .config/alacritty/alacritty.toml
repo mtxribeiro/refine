@@ -6,7 +6,6 @@ background = "#242424"
 
 [window]
 dynamic_padding = false
-opacity = 1
 
 [window.padding]
 x = 10
