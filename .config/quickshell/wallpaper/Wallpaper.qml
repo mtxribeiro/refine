@@ -85,11 +85,12 @@ Scope {
                     readonly property bool big: count > 4
                     readonly property int selected: count > 0 ? ((target % count) + count) % count : 0
 
-                    property int direction: 1
                     property int target: 0
                     property real scrollPos: target
 
                     Behavior on scrollPos {
+                        enabled: carousel.big
+
                         NumberAnimation {
                             duration: 150
                             easing.type: Easing.OutCubic
@@ -97,10 +98,8 @@ Scope {
                     }
 
                     function move(delta) {
-                        if (count === 0)
-                            return
-                        direction = delta
-                        target += delta
+                        if (count > 0)
+                            target += delta
                     }
 
                     Component.onCompleted: forceActiveFocus()
@@ -138,20 +137,15 @@ Scope {
 
                             readonly property bool isSelected: index === carousel.selected
                             readonly property real rel: {
+                                if (!carousel.big)
+                                    return index
                                 const c = carousel.count
-                                if (c < 2)
-                                    return 0
-                                const d = index - carousel.scrollPos
-                                if (carousel.big)
-                                    return (((d + 1) % c) + c) % c - 1
-                                const m = ((d % c) + c) % c
-                                return carousel.direction < 0 && m > c - 1 ? m - c : m
+                                return ((((index - carousel.scrollPos + 1) % c) + c) % c) - 1
                             }
 
                             x: rel * carousel.step
                             width: Theme.cardWidth
                             height: Theme.cardHeight
-                            opacity: carousel.big ? 1 : Math.max(0, Math.min(1, rel + 1, carousel.count - rel))
 
                             Image {
                                 id: img
