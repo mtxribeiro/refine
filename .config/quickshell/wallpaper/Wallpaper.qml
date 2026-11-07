@@ -10,7 +10,7 @@ Scope {
     id: root
 
     property bool open: false
-    property string dir: Quickshell.env("HOME") + "/Imagens/Wallpapers"
+    readonly property string dir: Quickshell.env("HOME") + "/Imagens/Wallpapers"
 
     function apply(path) {
         setter.command = [Quickshell.env("HOME") + "/.config/niri/scripts/wallpaper.sh", path]
@@ -82,14 +82,12 @@ Scope {
 
                     readonly property int count: files.count
                     readonly property real step: Theme.cardWidth + Theme.gap
-                    // 5+ wallpapers: sobra um escondido a esquerda e a volta e invisivel
-                    // ate 4: todos cabem na tela, a volta usa fade
                     readonly property bool big: count > 4
+                    readonly property int selected: count > 0 ? ((target % count) + count) % count : 0
 
-                    // target cresce/diminui sem limite; scrollPos anima ate ele
+                    property int direction: 1
                     property int target: 0
                     property real scrollPos: target
-                    readonly property int selected: count > 0 ? ((target % count) + count) % count : 0
 
                     Behavior on scrollPos {
                         NumberAnimation {
@@ -98,27 +96,34 @@ Scope {
                         }
                     }
 
-                    function next() {
-                        if (count > 0) target += 1
-                    }
-
-                    function prev() {
-                        if (count > 0) target -= 1
+                    function move(delta) {
+                        if (count === 0)
+                            return
+                        direction = delta
+                        target += delta
                     }
 
                     Component.onCompleted: forceActiveFocus()
 
                     Keys.onEscapePressed: root.open = false
                     Keys.onReturnPressed: {
-                        if (count > 0) root.apply(files.get(selected, "filePath"))
+                        if (count > 0)
+                            root.apply(files.get(selected, "filePath"))
                     }
                     Keys.onPressed: event => {
-                        if (event.key === Qt.Key_H || event.key === Qt.Key_Backtab || event.key === Qt.Key_Left) {
-                            prev()
+                        switch (event.key) {
+                        case Qt.Key_H:
+                        case Qt.Key_Left:
+                        case Qt.Key_Backtab:
+                            move(-1)
                             event.accepted = true
-                        } else if (event.key === Qt.Key_L || event.key === Qt.Key_Tab || event.key === Qt.Key_Right) {
-                            next()
+                            break
+                        case Qt.Key_L:
+                        case Qt.Key_Right:
+                        case Qt.Key_Tab:
+                            move(1)
                             event.accepted = true
+                            break
                         }
                     }
 
@@ -131,48 +136,40 @@ Scope {
                             required property url fileUrl
                             required property string filePath
 
-                            readonly property bool isSelected: card.index === carousel.selected
-
-                            // posicao relativa ao selecionado (0 = primeira posicao visivel)
+                            readonly property bool isSelected: index === carousel.selected
                             readonly property real rel: {
                                 const c = carousel.count
                                 if (c < 2)
                                     return 0
-                                const d = card.index - carousel.scrollPos
+                                const d = index - carousel.scrollPos
                                 if (carousel.big)
-                                    return (((d + 1) % c) + c) % c - 1   // de -1 a c-1
-                                return ((d % c) + c) % c                  // de 0 a c
+                                    return (((d + 1) % c) + c) % c - 1
+                                const m = ((d % c) + c) % c
+                                return carousel.direction < 0 && m > c - 1 ? m - c : m
                             }
-
-                            // ate 4 wallpapers: fade na entrada pela direita
-                            opacity: carousel.big ? 1 : Math.max(0, Math.min(1, carousel.count - rel))
-                            visible: opacity > 0 && rel > -1.5 && rel < 5
 
                             x: rel * carousel.step
                             width: Theme.cardWidth
                             height: Theme.cardHeight
+                            opacity: carousel.big ? 1 : Math.max(0, Math.min(1, rel + 1, carousel.count - rel))
 
                             Image {
                                 id: img
                                 anchors.fill: parent
-                                source: card.visible ? card.fileUrl : ""
+                                source: card.fileUrl
                                 sourceSize.width: Theme.cardWidth * 2
                                 fillMode: Image.PreserveAspectCrop
                                 asynchronous: true
                                 visible: false
                             }
 
-                            Item {
+                            Rectangle {
                                 id: mask
                                 anchors.fill: parent
+                                radius: Theme.cardRadius
+                                color: "black"
                                 layer.enabled: true
                                 visible: false
-
-                                Rectangle {
-                                    anchors.fill: parent
-                                    radius: Theme.cardRadius
-                                    color: "black"
-                                }
                             }
 
                             MultiEffect {
@@ -185,17 +182,9 @@ Scope {
                             Rectangle {
                                 anchors.fill: parent
                                 radius: Theme.cardRadius
-                                color: Theme.dim
-                                visible: !card.isSelected
-                            }
-
-                            Rectangle {
-                                anchors.fill: parent
-                                radius: Theme.cardRadius
-                                color: "transparent"
-                                border.width: 1
+                                color: card.isSelected ? "transparent" : Theme.dim
+                                border.width: card.isSelected ? 1 : 0
                                 border.color: Theme.accent
-                                visible: card.isSelected
                             }
 
                             MouseArea {
