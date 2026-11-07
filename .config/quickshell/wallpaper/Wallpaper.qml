@@ -73,28 +73,45 @@ Scope {
                     anchors.fill: parent
                 }
 
-                ListView {
+                PathView {
                     id: list
                     anchors.fill: parent
                     anchors.margins: Theme.pad
-                    orientation: ListView.Horizontal
-                    spacing: Theme.gap
                     clip: true
                     model: files
                     focus: true
-                    keyNavigationEnabled: true
-                    keyNavigationWraps: true
-                    highlightMoveDuration: 0
+
+                    // 4 cards visiveis + 1 de folga de cada lado (6 no total)
+                    pathItemCount: Math.max(1, Math.min(6, files.count))
+                    cacheItemCount: 2
+
+                    // card selecionado fica na 1a posicao visivel (2a do path)
+                    preferredHighlightBegin: 1 / pathItemCount
+                    preferredHighlightEnd: 1 / pathItemCount
+                    highlightRangeMode: PathView.StrictlyEnforceRange
+                    snapMode: PathView.SnapOneItem
+                    highlightMoveDuration: 150
+
+                    readonly property real step: Theme.cardWidth + Theme.gap
+
+                    path: Path {
+                        startX: -list.step + Theme.cardWidth / 2
+                        startY: list.height / 2
+                        PathLine {
+                            x: list.step * (list.pathItemCount - 1) + Theme.cardWidth / 2
+                            y: list.height / 2
+                        }
+                    }
 
                     Component.onCompleted: forceActiveFocus()
 
                     Keys.onEscapePressed: root.open = false
                     Keys.onReturnPressed: root.apply(files.get(currentIndex, "filePath"))
                     Keys.onPressed: event => {
-                        if (event.key === Qt.Key_H || event.key === Qt.Key_Backtab) {
+                        if (event.key === Qt.Key_H || event.key === Qt.Key_Backtab || event.key === Qt.Key_Left) {
                             decrementCurrentIndex()
                             event.accepted = true
-                        } else if (event.key === Qt.Key_L || event.key === Qt.Key_Tab) {
+                        } else if (event.key === Qt.Key_L || event.key === Qt.Key_Tab || event.key === Qt.Key_Right) {
                             incrementCurrentIndex()
                             event.accepted = true
                         }
@@ -105,7 +122,7 @@ Scope {
                         required property int index
                         required property url fileUrl
                         required property string filePath
-                        readonly property bool selected: ListView.isCurrentItem
+                        readonly property bool selected: PathView.isCurrentItem
 
                         width: Theme.cardWidth
                         height: Theme.cardHeight
@@ -158,8 +175,6 @@ Scope {
 
                         MouseArea {
                             anchors.fill: parent
-                            hoverEnabled: true
-                            onEntered: list.currentIndex = card.index
                             onClicked: root.apply(card.filePath)
                         }
                     }
