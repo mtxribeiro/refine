@@ -46,6 +46,9 @@
 
   "custom/tray-toggle": {
     "format": " ",
+    "exec": "echo x",
+    "exec-if": "busctl --user get-property org.kde.StatusNotifierWatcher /StatusNotifierWatcher org.kde.StatusNotifierWatcher RegisteredStatusNotifierItems | grep -qv '^as 0'",
+    "interval": 0,
     "tooltip": false
   },
 
