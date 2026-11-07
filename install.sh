@@ -3,7 +3,7 @@
 cd "$(dirname "$0")"
 
 build="git base-devel"
-tools="vim flatpak imagemagick"
+tools="vim imagemagick"
 audio="pipewire-audio pavucontrol"
 keys="playerctl brightnessctl"
 network="nm-connection-editor"
