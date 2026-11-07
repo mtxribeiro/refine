@@ -29,7 +29,7 @@ tooltip {
 #workspaces button {
     color: transparent;
     background: #777672;
-    min-width: 12px;
+    min-width: 8px;
     min-height: 4px;
     margin-top: 12px;
     margin-bottom: 12px;
