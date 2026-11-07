@@ -81,11 +81,12 @@ Scope {
                     focus: true
 
                     readonly property int count: files.count
-                    // com 5+ wallpapers o carrossel gira; com menos, ficam parados
-                    readonly property bool loops: count > 4
                     readonly property real step: Theme.cardWidth + Theme.gap
+                    // 5+ wallpapers: sobra um escondido a esquerda e a volta e invisivel
+                    // ate 4: todos cabem na tela, a volta usa fade
+                    readonly property bool big: count > 4
 
-                    // target cresce/diminui sem limite; selected e o indice real
+                    // target cresce/diminui sem limite; scrollPos anima ate ele
                     property int target: 0
                     property real scrollPos: target
                     readonly property int selected: count > 0 ? ((target % count) + count) % count : 0
@@ -132,22 +133,29 @@ Scope {
 
                             readonly property bool isSelected: card.index === carousel.selected
 
-                            // posicao relativa: de -1 (escondido a esquerda) ate count-2
-                            readonly property real loopRel: carousel.count > 0
-                                ? (((card.index - carousel.scrollPos + 1) % carousel.count + carousel.count) % carousel.count) - 1
-                                : 0
-                            readonly property real rel: carousel.loops ? loopRel : card.index
-                            readonly property bool shown: rel > -1.5 && rel < 5
+                            // posicao relativa ao selecionado (0 = primeira posicao visivel)
+                            readonly property real rel: {
+                                const c = carousel.count
+                                if (c < 2)
+                                    return 0
+                                const d = card.index - carousel.scrollPos
+                                if (carousel.big)
+                                    return (((d + 1) % c) + c) % c - 1   // de -1 a c-1
+                                return ((d % c) + c) % c                  // de 0 a c
+                            }
+
+                            // ate 4 wallpapers: fade na entrada pela direita
+                            opacity: carousel.big ? 1 : Math.max(0, Math.min(1, carousel.count - rel))
+                            visible: opacity > 0 && rel > -1.5 && rel < 5
 
                             x: rel * carousel.step
                             width: Theme.cardWidth
                             height: Theme.cardHeight
-                            visible: shown
 
                             Image {
                                 id: img
                                 anchors.fill: parent
-                                source: card.shown ? card.fileUrl : ""
+                                source: card.visible ? card.fileUrl : ""
                                 sourceSize.width: Theme.cardWidth * 2
                                 fillMode: Image.PreserveAspectCrop
                                 asynchronous: true
