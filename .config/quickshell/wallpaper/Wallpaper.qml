@@ -151,7 +151,7 @@ Scope {
                             anchors.fill: parent
                             radius: Theme.cardRadius
                             color: "transparent"
-                            border.width: 2
+                            border.width: 1
                             border.color: Theme.accent
                             visible: card.selected
                         }
