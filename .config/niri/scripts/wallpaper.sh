@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 DIR="$HOME/Imagens/Wallpapers"
-DEFAULT="$DIR/current.jpg"
+DEFAULT="$DIR/default.jpg"
 CACHE="$HOME/.cache/current-wallpaper"
 THUMBS="$HOME/.cache/wallpaper-thumbs"
 LOCK="$HOME/.config/hypr/hyprlock.conf"
