@@ -78,8 +78,6 @@ prefer-no-csd
 
 screenshot-path null
 
-workspace "1"
-
 binds {
     Mod+Space  { spawn "qs" "ipc" "call" "launcher" "toggle"; }
     Mod+Return { spawn-sh "alacritty"; }
