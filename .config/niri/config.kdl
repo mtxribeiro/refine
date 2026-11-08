@@ -32,8 +32,8 @@ layout {
 
     focus-ring {
         width 1
-        active-color "#ffffff"
-        inactive-color "#5e5c64"
+        active-color "#e6e6e6"
+        inactive-color "#6b6b6b"
         urgent-color "#e01b24"
     }
 
@@ -47,7 +47,7 @@ hotkey-overlay {
 }
 
 overview {
-    backdrop-color "#1e1e1e"
+    backdrop-color "#161616"
 }
 
 window-rule {
@@ -64,14 +64,13 @@ recent-windows {
     open-delay-ms 0
 
     highlight {
-        active-color "#ffffff"
+        active-color "#e6e6e6"
         urgent-color "#e01b24"
         padding 2
         corner-radius 3
     }
 }
 spawn-sh-at-startup "qs"
-spawn-sh-at-startup "waybar"
 spawn-sh-at-startup "~/.config/niri/scripts/wallpaper.sh --restore"
 spawn-sh-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
@@ -79,12 +78,12 @@ prefer-no-csd
 
 screenshot-path null
 
+workspace "1"
+
 binds {
+    Mod+Space  { spawn "qs" "ipc" "call" "launcher" "toggle"; }
     Mod+Return { spawn-sh "alacritty"; }
-    Mod+Space { spawn "qs" "ipc" "call" "launcher" "toggle"; }
-    Mod+Escape { spawn-sh "hyprlock"; }
     Mod+E      { spawn-sh "nautilus"; }
-    Mod+P      { spawn "qs" "ipc" "call" "power" "toggle"; }
     Mod+W      { spawn-sh "qs ipc call wallpaper toggle"; }
 
     Mod+O repeat=false { toggle-overview; }
