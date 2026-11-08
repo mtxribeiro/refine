@@ -55,6 +55,10 @@ window-rule {
     clip-to-geometry true
 }
 
+environment {
+    QS_ICON_THEME "Adwaita"
+}
+
 recent-windows {
     debounce-ms 0
     open-delay-ms 0
@@ -77,10 +81,10 @@ screenshot-path null
 
 binds {
     Mod+Return { spawn-sh "alacritty"; }
-    Mod+Space  { spawn-sh "rofi -show drun"; }
+    Mod+Space { spawn "qs" "ipc" "call" "launcher" "toggle"; }
     Mod+Escape { spawn-sh "hyprlock"; }
     Mod+E      { spawn-sh "nautilus"; }
-    Mod+P      { spawn-sh "nwg-bar"; }
+    Mod+P      { spawn "qs" "ipc" "call" "power" "toggle"; }
     Mod+W      { spawn-sh "qs ipc call wallpaper toggle"; }
 
     Mod+O repeat=false { toggle-overview; }
